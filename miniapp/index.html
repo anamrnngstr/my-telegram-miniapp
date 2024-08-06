@@ -3,14 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini App</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Project Request Card</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Добро пожаловать в Mini App</h1>
-    <button id="orderButton">Заказать</button>
-    <button id="performButton">Исполнить</button>
 
-    <script src="app.js"></script>
+<div class="card">
+    <div class="status-bar">
+        <div class="client-status">Постоянный клиент</div>
+        <div class="date-time">Сегодня 17:45</div>
+    </div>
+    <div class="card-header">
+        <h1>Правовое регулирование купли-продажи земельных участков</h1>
+        <div class="article-info">
+            <span class="category">Статья</span>
+            <span class="field">Право и юриспруденция</span>
+            <span class="due-date">30.08.2024</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>Нужно написать курсовую работу объемом 30 страниц с оригинальностью 70% по антиплагиату РАНХиГС.
+           Будет просьба, перед началом написания, нужно будет составить план курсовой работы, науч рук его согласует,
+           а далее уже приступить к написанию самой курсовой.
+        </p>
+    </div>
+    <div class="card-footer">
+        <div class="price">Договорная цена</div>
+        <div class="bids">37 ставок</div>
+        <button class="submit-btn">Поставить ставку</button>
+    </div>
+</div>
+
 </body>
 </html>

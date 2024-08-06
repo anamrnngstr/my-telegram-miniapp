@@ -1,11 +1,82 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
     padding: 20px;
+    display: flex;
+    justify-content: center;
 }
 
-button {
-    margin: 10px;
+.card {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.status-bar {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+}
+
+.client-status {
+    color: purple;
+    font-weight: bold;
+}
+
+.date-time {
+    color: gray;
+}
+
+.card-header h1 {
+    font-size: 18px;
     padding: 10px 20px;
-    font-size: 16px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+}
+
+.article-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #eee;
+    font-size: 14px;
+}
+
+.card-body {
+    padding: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.card-footer {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #eee;
+}
+
+.price {
+    font-weight: bold;
+    color: #333;
+}
+
+.bids {
+    color: #666;
+}
+
+.submit-btn {
+    padding: 10px 20px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
