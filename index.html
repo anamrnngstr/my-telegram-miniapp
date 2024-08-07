@@ -1,38 +1,378 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Request Card</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>ONLYGRADS</title>
+        <script src="https://telegram.org/js/telegram-web-app.js"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
 
-<div class="card">
-    <div class="status-bar">
-        <div class="client-status">Постоянный клиент</div>
-        <div class="date-time">Сегодня 17:45</div>
-    </div>
-    <div class="card-header">
-        <h1>Правовое регулирование купли-продажи земельных участков</h1>
-        <div class="article-info">
-            <span class="category">Статья</span>
-            <span class="field">Право и юриспруденция</span>
-            <span class="due-date">30.08.2024</span>
+        <div id="mainContent">
+            <div class="app">
+                <div class="pages">
+                    
+                    <div id="first-page" class="page">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h1 id="hello-text">Привет</h1>
+                            </div>
+                            <div class="middle-content">
+                                <p>Добро пожаловать в нашу платформу для заказа академических работ. Мы готовы помочь вам с вашими учебными задачами.</p>
+                            </div>
+                            <div class="bottom-content">
+                                <button id="order-button" class="button" onclick="switchPage('first-page', 'order-type')">Заказать работу</button>
+                                <button id="order-button" class="button" onclick="switchPage('first-page', 'orders')">Мои заказы</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="order-type" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h2>Выберите тип работы и предмет</h2>
+                            </div>
+                            <div class="middle-content">
+                                <p>Укажите тип работы, предмет</p>
+                                <form>
+                                    <div class="select-wrapper">
+                                        <label for="task-type">Тип работы:</label>
+                                        <select id="task-type" name="task-type" class="custom-input">
+                                            <option value="">Выберите тип работы</option>
+                                            <optgroup label="Простые">
+                                                <option value="essay">Эссе</option>
+                                                <option value="test">Контрольная работа</option>
+                                                <option value="lab-report">Лабораторная работа</option>
+                                            </optgroup>
+                                            <optgroup label="Средние">
+                                                <option value="coursework">Курсовая работа</option>
+                                                <option value="practice-report">Отчёт по практике</option>
+                                                <option value="abstract">Реферат</option>
+                                            </optgroup>
+                                            <optgroup label="Сложные">
+                                                <option value="diploma">Дипломная работа</option>
+                                                <option value="master-thesis">Магистерская диссертация</option>
+                                                <option value="thesis">Выпускная квалификационная работа</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrapper">
+                                        <label for="subject">Предмет:</label>
+                                        <select id="subject" name="subject" class="custom-input">
+                                            <option value="">Выберите предмет</option>
+                                            <option value="informatics">Информатика</option>
+                                            <option value="biology">Биология</option>
+                                            <option value="mathematics">Математика</option>
+                                            <option value="physics">Физика</option>
+                                        </select>
+                                    </div>
+                                    <!-- <div class="select-wrapper">
+                                        <label for="page-count">Количество страниц:</label>
+                                        <input type="number" id="page-count" name="page-count" class="custom-input" min="1" placeholder="Введите количество страниц">
+                                    </div>
+                                    <div class="select-wrapper">
+                                        <p>Укажите желаемую дату сдачи работы.</p>
+                                        <input type="date" id="deadline-input" class="date-input">
+                                    </div>
+
+                                    <div class="select-wrapper">
+                                        <label for="uniq">Оригинальность работы:</label>
+                                        <select id="uniq" name="uniq" class="custom-input">
+                                            <option value="">Выберите вариант</option>
+                                            <option value="free-10%">Бесплатно: 10%</option>
+                                            <option value="free-20%">Бесплатно: 20%</option>
+                                            <option value="pay-80%">Платно: 80%</option>
+                                            <option value="pay-90%">Платно: 90%</option>
+                                        </select>
+                                    </div> -->
+                                </form>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="container">
+                                    <!-- <button id="next-button" class="button" onclick="goToNextPage()">Далее</button> -->
+                                    <button id="back-button" class="button-back" onclick="switchPage('order-type', 'order-params')">Далее</button>
+                                </div>
+                                <button id="back-button" class="button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="order-params" class="page" style="display: none;">
+                        <div class="page-content">
+                            <!-- <div class="top-content">
+                                <h2>Укажите количество страниц</h2>
+                            </div> -->
+                            <div class="middle-content">
+                                <p>Укажите количество страниц ну и далее по списку</p>
+                                <form>
+                                    <div class="select-wrapper">
+                                        <label for="page-count">Количество страниц:</label>
+                                        <input type="number" id="page-count" name="page-count" class="custom-input" min="1" placeholder="Введите количество страниц">
+                                    </div>
+                                    <div class="select-wrapper">
+                                        <p>Укажите желаемую дату сдачи работы.</p>
+                                        <input type="date" id="deadline-input" class="date-input">
+                                    </div>
+
+                                    <div class="select-wrapper">
+                                        <label for="uniq">Оригинальность работы:</label>
+                                        <select id="uniq" name="uniq" class="custom-input">
+                                            <option value="">Выберите вариант</option>
+                                            <option value="free-10%">Бесплатно: 10%</option>
+                                            <option value="free-20%">Бесплатно: 20%</option>
+                                            <option value="pay-80%">Платно: 80%</option>
+                                            <option value="pay-90%">Платно: 90%</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="container">
+                                    <button id="back-button" class="button-back" onclick="switchPage('order-params', 'add-info-page')">Далее</button>
+                                </div>
+                                <button id="back-button" class="button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="add-info-page" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h2>Дополнительная информация</h2>
+                            </div>
+                            <div class="middle-content">
+                                <p>Укажите дополнительные требования или пожелания к работе:</p>
+                                <div class="select-wrapper">
+                                    <textarea id="additional-info" class="custom-input" rows="4" placeholder="Введите дополнительную информацию"></textarea>
+                                </div>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="container">
+                                    <button id="next-button" class="button" onclick="switchPage('add-info-page', 'confirm-page')">Далее</button>
+                                </div>
+                                <button class="button-back" onclick="switchPage('add-info-page', 'order-type')">Назад</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="confirm-page" class="page" style="display: none;">
+                        <div class="page-content">
+    
+                            <div class="bottom-content">
+                                <button id="order-button" class="button" onclick="switchPage('confirm-page', 'confirm-page')">Подтвердить</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="orders" class="page">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h1 id="hello-text">Мои заказы</h1>
+                            </div>
+                            <div class="middle-content">
+                                <p>Добро пожаловать в нашу платформу для заказа академических работ. Мы готовы помочь вам с вашими учебными задачами.</p>
+                            </div>
+                            <div class="bottom-content">
+                                <button id="order-button" class="button" onclick="switchPage('orders', 'order-type')">Заказать работу</button>
+                                <button id="order-button" class="button" onclick="switchPage('orders', 'first-page')">Назад</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div id="debug-section"></div>
         </div>
-    </div>
-    <div class="card-body">
-        <p>Нужно написать курсовую работу объемом 30 страниц с оригинальностью 70% по антиплагиату РАНХиГС.
-           Будет просьба, перед началом написания, нужно будет составить план курсовой работы, науч рук его согласует,
-           а далее уже приступить к написанию самой курсовой.
-        </p>
-    </div>
-    <div class="card-footer">
-        <div class="price">Договорная цена</div>
-        <div class="bids">37 ставок</div>
-        <button class="submit-btn">Поставить ставку</button>
-    </div>
-</div>
 
-</body>
+        <script>
+            const tg = window.Telegram.WebApp;
+
+            const debugSection = document.getElementById('debug-section');
+
+            function debug(message) {
+                debugSection.innerHTML += message + '<br>';
+                debugSection.scrollTop = debugSection.scrollHeight;
+            }
+
+            debug("start...");
+
+            function toggleDebugSection() {
+                const debugSection = document.getElementById('debug-section');
+                if (debugSection.style.display === 'none' || debugSection.style.display === '') {
+                    debugSection.style.display = 'block';
+                } else {
+                    debugSection.style.display = 'none';
+                }
+            }
+
+            let longPressTimer;
+            const longPressDuration = 3000;
+
+            function addLongPressListener(element) {
+                element.addEventListener('touchstart', function(e) {
+                    longPressTimer = setTimeout(function() {
+                        toggleDebugSection();
+                    }, longPressDuration);
+                });
+
+                element.addEventListener('touchend', function(e) {
+                    clearTimeout(longPressTimer);
+                });
+
+                element.addEventListener('touchmove', function(e) {
+                    clearTimeout(longPressTimer);
+                });
+            }
+
+            document.querySelectorAll('.app').forEach(addLongPressListener);
+
+            tg.ready();
+            tg.expand();
+            tg.setHeaderColor('#298c6b');
+            tg.setBackgroundColor('#298c6b');
+
+            let isKeyboardVisible = false;
+            const initialWindowHeight = window.innerHeight;
+
+            function setExitButtonState() {
+              tg.MainButton.setParams({
+                text: '-',
+                color: '#23775b',
+                text_color: '#FFFFFF',
+                is_active: true
+              });
+              // tg.MainButton.onClick(() => {
+              //   tg.close();
+              // });
+            }
+
+            function setHideKeyboardButtonState() {
+              tg.MainButton.setParams({
+                text: 'Скрыть клавиатуру',
+                color: '#23775b',
+                text_color: '#FFFFFF',
+                is_active: true
+              });
+              tg.MainButton.onClick(() => {
+                if (document.activeElement) {
+                  document.activeElement.blur();
+                }
+                tg.closeScanQrPopup();
+                isKeyboardVisible = false;
+                setExitButtonState();
+              });
+            }
+
+            // Инициализация кнопки
+            setExitButtonState();
+            tg.MainButton.show();
+
+            // Отслеживание фокуса на полях ввода
+            const inputFields = document.querySelectorAll('input, textarea');
+            inputFields.forEach(field => {
+              field.addEventListener('focus', () => {
+                if (!isKeyboardVisible) {
+                  isKeyboardVisible = true;
+                  setHideKeyboardButtonState();
+                }
+              });
+            });
+
+            // tg.MainButton.show();
+            // tg.MainButton.setParams({
+            //   // text: 'EXIT',
+            //   text: 'скрыть клавиатуру',
+            //   color: '#23775b',
+            //   text_color: '#FFFFFF',
+            //   is_active: true
+            // });
+
+            // // tg.MainButton.onClick(() => {
+            // //     tg.close();
+            // // });
+
+            // tg.MainButton.onClick(() => {
+            //     // Сначала убираем фокус с текущего элемента ввода
+            //       if (document.activeElement) {
+            //         document.activeElement.blur();
+            //       }
+                  
+            //       // Затем закрываем нативный попап (клавиатуру)
+            //       if (window.Telegram && window.Telegram.WebApp) {
+            //         window.Telegram.WebApp.closeScanQrPopup();
+            //       }
+            // });
+
+            function updateGreeting() {
+                const helloText = document.getElementById('hello-text');
+                const userName = tg.initDataUnsafe?.user?.first_name || tg.initDataUnsafe?.user?.username;
+                
+                if (userName) {
+                    helloText.textContent = `Привет, ${userName}!`;
+                    debug(`Имя пользователя получено: ${userName}`);
+                } else {
+                    debug("Имя пользователя не найдено");
+                }
+            }
+
+            window.addEventListener('load', updateGreeting);
+
+
+            function autoResize(textarea) {
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                const additionalInfo = document.getElementById('additional-info');
+                additionalInfo.addEventListener('input', function() {
+                    autoResize(this);
+                });
+            });
+
+            function switchPage(fromPageId, toPageId) {
+                const fromPage = document.getElementById(fromPageId);
+                const toPage = document.getElementById(toPageId);
+                
+                fromPage.style.display = 'none';
+                toPage.style.display = 'flex';
+                
+                if (toPageId === 'add-info-page') {
+                    const additionalInfo = document.getElementById('additional-info');
+                    autoResize(additionalInfo);
+                }
+                
+                debug(`Переключение с ${fromPageId} на ${toPageId}`);
+            }
+
+            // Установка минимальной даты для выбора (сегодня)
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('deadline-input').setAttribute('min', today);
+
+
+
+            const taskTypeSelect = document.getElementById('task-type');
+            const subjectSelect = document.getElementById('subject');
+            const nextButton = document.getElementById('next-button');
+            const pageCountInput = document.getElementById('page-count');
+            const deadline = document.getElementById('deadline-input');
+            const uniqSelect = document.getElementById('uniq');
+
+            function goToNextPage() {
+                debug(`Выбранный тип работы: ${taskTypeSelect.options[taskTypeSelect.selectedIndex].text}`);
+                debug(`Выбранный предмет: ${subjectSelect.options[subjectSelect.selectedIndex].text}`);
+                debug(`Количество страниц: ${pageCountInput.value}`);
+                debug(`Дата сдачи: ${deadline.value}`);
+                debug(`Дата сдачи: ${uniqSelect.value}`);
+                if (taskTypeSelect.value && subjectSelect.value && pageCountInput.value) {
+                    switchPage('order-type', 'add-info-page');
+                } else {
+                    alert('Пожалуйста, выберите тип работы, предмет и укажите количество страниц');
+                }
+            }
+
+        </script>
+
+    </body>
 </html>
