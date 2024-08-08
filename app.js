@@ -170,55 +170,47 @@ function updateConfirmPage() {
            
 
  // Function to handle button animation
-var animateButton = function(e) {
-    e.preventDefault();
+ var animateButton = function(e) {
 
-    // Reset animation
+    e.preventDefault;
+    //reset animation
     e.target.classList.remove('animate');
+    
     e.target.classList.add('animate');
-
-    setTimeout(function() {
-        e.target.classList.remove('animate');
-    }, 700);
-};
+    setTimeout(function(){
+      e.target.classList.remove('animate');
+    },700);
+  };
 
 // Function to switch pages
 function switchPage(fromPageId, toPageId) {
-    setTimeout(function() {
-        const fromPage = document.getElementById(fromPageId);
-        const toPage = document.getElementById(toPageId);
-
-        if (fromPage && toPage) {
-            fromPage.style.display = 'none';
-            toPage.style.display = 'flex';
-
-            if (toPageId === 'add-info-page') {
-                const additionalInfo = document.getElementById('additional-info');
-                autoResize(additionalInfo);
-            } else if (toPageId === 'confirm-page') {
-                updateConfirmPage();
-            } else if (toPageId === 'orders') {
-                getOrders();
-            }
-
-            console.log(`Переключение с ${fromPageId} на ${toPageId}`);
-        } else {
-            if (!fromPage) console.error(`Element with id ${fromPageId} not found`);
-            if (!toPage) console.error(`Element with id ${toPageId} not found`);
+    const fromPage = document.getElementById(fromPageId);
+    const toPage = document.getElementById(toPageId);
+    
+    setTimeout(() => { // Задержка перед сменой страниц
+        fromPage.style.display = 'none';
+        toPage.style.display = 'flex';
+        
+        if (toPageId === 'add-info-page') {
+            const additionalInfo = document.getElementById('additional-info');
+            autoResize(additionalInfo);
+        } else if (toPageId === 'confirm-page') {
+            updateConfirmPage();
+        } else if (toPageId === 'orders') {
+            getOrders();
         }
-    }, 700); // Delay the page switch to allow the animation to complete
+        
+        console.log(`Переключение с ${fromPageId} на ${toPageId}`);
+    }, 700); // 500 миллисекунд задержки, можно настроить по вашему усмотрению
 }
 
-var bubblyButtons = document.getElementsByClassName("bubbly-button");
 
-for (var i = 0; i < bubblyButtons.length; i++) {
-    bubblyButtons[i].addEventListener('click', function(e) {
-        animateButton(e);
-        var fromPageId = e.target.getAttribute('data-from');
-        var toPageId = e.target.getAttribute('data-to');
-        switchPage(fromPageId, toPageId);
-    }, false);
-}
+
+ var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+ for (var i = 0; i < bubblyButtons.length; i++) {
+   bubblyButtons[i].addEventListener('click', animateButton, false);
+ }
 
         async function getOrders() {
             try {
