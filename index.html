@@ -9,6 +9,8 @@
     </head>
     <body>
 
+       
+
         <div id="mainContent">
             <div class="app">
                 <div class="pages">
@@ -19,11 +21,11 @@
                                 <h1 id="hello-text">Привет</h1>
                             </div>
                             <div class="middle-content">
-                                <p>Добро пожаловать в нашу платформу для заказа академических работ. Мы готовы помочь вам с вашими учебными задачами.</p>
+                                <p>Добро пожаловать </p>
                             </div>
                             <div class="bottom-content">
-                                <button id="order-button" class="button" onclick="switchPage('first-page', 'order-type')">Заказать работу</button>
-                                <button id="order-button" class="button" onclick="switchPage('first-page', 'orders')">Мои заказы</button>
+                                <button id="order-button" class="bubbly-button button" onclick="switchPage('first-page', 'order-type')">Заказать работу</button>
+                                <button id="order-button" class="bubbly-button button" onclick="switchPage('first-page', 'orders')">Мои заказы</button>
                             </div>
                         </div>
                     </div>
@@ -31,10 +33,10 @@
                     <div id="order-type" class="page" style="display: none;">
                         <div class="page-content">
                             <div class="top-content">
-                                <h2>Выберите тип работы и предмет</h2>
+                                <h2>Шаг 1</h2>
                             </div>
                             <div class="middle-content">
-                                <p>Укажите тип работы, предмет</p>
+                                
                                 <form>
                                     <div class="select-wrapper">
                                         <label for="task-type">Тип работы:</label>
@@ -91,9 +93,9 @@
                             <div class="bottom-content">
                                 <div class="container">
                                     <!-- <button id="next-button" class="button" onclick="goToNextPage()">Далее</button> -->
-                                    <button id="back-button" class="button-back" onclick="switchPage('order-type', 'order-params')">Далее</button>
+                                    <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-type', 'order-params')">Далее</button>
                                 </div>
-                                <button id="back-button" class="button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
+                                <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
                             </div>
                         </div>
                     </div>
@@ -129,9 +131,9 @@
                             </div>
                             <div class="bottom-content">
                                 <div class="container">
-                                    <button id="back-button" class="button-back" onclick="switchPage('order-params', 'add-info-page')">Далее</button>
+                                    <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-params', 'add-info-page')">Далее</button>
                                 </div>
-                                <button id="back-button" class="button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
+                                <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
                             </div>
                         </div>
                     </div>
@@ -149,18 +151,41 @@
                             </div>
                             <div class="bottom-content">
                                 <div class="container">
-                                    <button id="next-button" class="button" onclick="switchPage('add-info-page', 'confirm-page')">Далее</button>
+                                    <button id="next-button" class="bubbly-button button" onclick="switchPage('add-info-page', 'confirm-page')">Далее</button>
                                 </div>
-                                <button class="button-back" onclick="switchPage('add-info-page', 'order-type')">Назад</button>
+                                <button class="bubbly-button button-back" onclick="switchPage('add-info-page', 'order-type')">Назад</button>
                             </div>
                         </div>
                     </div>
 
-                    <div id="confirm-page" class="page" style="display: none;">
+                    <!-- <div id="confirm-page" class="page" style="display: none;">
                         <div class="page-content">
     
                             <div class="bottom-content">
                                 <button id="order-button" class="button" onclick="switchPage('confirm-page', 'confirm-page')">Подтвердить</button>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <div id="confirm-page" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h2>Подтверждение заказа</h2>
+                            </div>
+                            <div class="middle-content">
+                                <p>Пожалуйста, проверьте детали вашего заказа:</p>
+                                <div id="order-summary">
+                                    <p><strong>Тип работы:</strong> <span id="confirm-task-type"></span></p>
+                                    <p><strong>Предмет:</strong> <span id="confirm-subject"></span></p>
+                                    <p><strong>Количество страниц:</strong> <span id="confirm-page-count"></span></p>
+                                    <p><strong>Дата сдачи:</strong> <span id="confirm-deadline"></span></p>
+                                    <p><strong>Оригинальность:</strong> <span id="confirm-uniq"></span></p>
+                                    <p><strong>Дополнительная информация:</strong> <span id="confirm-additional-info"></span></p>
+                                </div>
+                            </div>
+                            <div class="bottom-content">
+                                <button id="confirm-order-button" class="bubbly-button button" onclick="confirmOrder()">Подтвердить заказ</button>
+                                <button class="bubbly-button button-back" onclick="switchPage('confirm-page', 'add-info-page')">Назад</button>
                             </div>
                         </div>
                     </div>
@@ -170,12 +195,11 @@
                             <div class="top-content">
                                 <h1 id="hello-text">Мои заказы</h1>
                             </div>
-                            <div class="middle-content">
+                            <div class="middle-content middle-content-orders">
                                 <p>Добро пожаловать в нашу платформу для заказа академических работ. Мы готовы помочь вам с вашими учебными задачами.</p>
                             </div>
                             <div class="bottom-content">
-                                <button id="order-button" class="button" onclick="switchPage('orders', 'order-type')">Заказать работу</button>
-                                <button id="order-button" class="button" onclick="switchPage('orders', 'first-page')">Назад</button>
+                                <button id="order-button" class="bubbly-button button" onclick="switchPage('orders', 'first-page')">Назад</button>
                             </div>
                         </div>
                     </div>
@@ -184,195 +208,5 @@
             </div>
             <div id="debug-section"></div>
         </div>
-
-        <script>
-            const tg = window.Telegram.WebApp;
-
-            const debugSection = document.getElementById('debug-section');
-
-            function debug(message) {
-                debugSection.innerHTML += message + '<br>';
-                debugSection.scrollTop = debugSection.scrollHeight;
-            }
-
-            debug("start...");
-
-            function toggleDebugSection() {
-                const debugSection = document.getElementById('debug-section');
-                if (debugSection.style.display === 'none' || debugSection.style.display === '') {
-                    debugSection.style.display = 'block';
-                } else {
-                    debugSection.style.display = 'none';
-                }
-            }
-
-            let longPressTimer;
-            const longPressDuration = 3000;
-
-            function addLongPressListener(element) {
-                element.addEventListener('touchstart', function(e) {
-                    longPressTimer = setTimeout(function() {
-                        toggleDebugSection();
-                    }, longPressDuration);
-                });
-
-                element.addEventListener('touchend', function(e) {
-                    clearTimeout(longPressTimer);
-                });
-
-                element.addEventListener('touchmove', function(e) {
-                    clearTimeout(longPressTimer);
-                });
-            }
-
-            document.querySelectorAll('.app').forEach(addLongPressListener);
-
-            tg.ready();
-            tg.expand();
-            tg.setHeaderColor('#298c6b');
-            tg.setBackgroundColor('#298c6b');
-
-            let isKeyboardVisible = false;
-            const initialWindowHeight = window.innerHeight;
-
-            function setExitButtonState() {
-              tg.MainButton.setParams({
-                text: '-',
-                color: '#23775b',
-                text_color: '#FFFFFF',
-                is_active: true
-              });
-              // tg.MainButton.onClick(() => {
-              //   tg.close();
-              // });
-            }
-
-            function setHideKeyboardButtonState() {
-              tg.MainButton.setParams({
-                text: 'Скрыть клавиатуру',
-                color: '#23775b',
-                text_color: '#FFFFFF',
-                is_active: true
-              });
-              tg.MainButton.onClick(() => {
-                if (document.activeElement) {
-                  document.activeElement.blur();
-                }
-                tg.closeScanQrPopup();
-                isKeyboardVisible = false;
-                setExitButtonState();
-              });
-            }
-
-            // Инициализация кнопки
-            setExitButtonState();
-            tg.MainButton.show();
-
-            // Отслеживание фокуса на полях ввода
-            const inputFields = document.querySelectorAll('input, textarea');
-            inputFields.forEach(field => {
-              field.addEventListener('focus', () => {
-                if (!isKeyboardVisible) {
-                  isKeyboardVisible = true;
-                  setHideKeyboardButtonState();
-                }
-              });
-            });
-
-            // tg.MainButton.show();
-            // tg.MainButton.setParams({
-            //   // text: 'EXIT',
-            //   text: 'скрыть клавиатуру',
-            //   color: '#23775b',
-            //   text_color: '#FFFFFF',
-            //   is_active: true
-            // });
-
-            // // tg.MainButton.onClick(() => {
-            // //     tg.close();
-            // // });
-
-            // tg.MainButton.onClick(() => {
-            //     // Сначала убираем фокус с текущего элемента ввода
-            //       if (document.activeElement) {
-            //         document.activeElement.blur();
-            //       }
-                  
-            //       // Затем закрываем нативный попап (клавиатуру)
-            //       if (window.Telegram && window.Telegram.WebApp) {
-            //         window.Telegram.WebApp.closeScanQrPopup();
-            //       }
-            // });
-
-            function updateGreeting() {
-                const helloText = document.getElementById('hello-text');
-                const userName = tg.initDataUnsafe?.user?.first_name || tg.initDataUnsafe?.user?.username;
-                
-                if (userName) {
-                    helloText.textContent = `Привет, ${userName}!`;
-                    debug(`Имя пользователя получено: ${userName}`);
-                } else {
-                    debug("Имя пользователя не найдено");
-                }
-            }
-
-            window.addEventListener('load', updateGreeting);
-
-
-            function autoResize(textarea) {
-                textarea.style.height = 'auto';
-                textarea.style.height = textarea.scrollHeight + 'px';
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-                const additionalInfo = document.getElementById('additional-info');
-                additionalInfo.addEventListener('input', function() {
-                    autoResize(this);
-                });
-            });
-
-            function switchPage(fromPageId, toPageId) {
-                const fromPage = document.getElementById(fromPageId);
-                const toPage = document.getElementById(toPageId);
-                
-                fromPage.style.display = 'none';
-                toPage.style.display = 'flex';
-                
-                if (toPageId === 'add-info-page') {
-                    const additionalInfo = document.getElementById('additional-info');
-                    autoResize(additionalInfo);
-                }
-                
-                debug(`Переключение с ${fromPageId} на ${toPageId}`);
-            }
-
-            // Установка минимальной даты для выбора (сегодня)
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('deadline-input').setAttribute('min', today);
-
-
-
-            const taskTypeSelect = document.getElementById('task-type');
-            const subjectSelect = document.getElementById('subject');
-            const nextButton = document.getElementById('next-button');
-            const pageCountInput = document.getElementById('page-count');
-            const deadline = document.getElementById('deadline-input');
-            const uniqSelect = document.getElementById('uniq');
-
-            function goToNextPage() {
-                debug(`Выбранный тип работы: ${taskTypeSelect.options[taskTypeSelect.selectedIndex].text}`);
-                debug(`Выбранный предмет: ${subjectSelect.options[subjectSelect.selectedIndex].text}`);
-                debug(`Количество страниц: ${pageCountInput.value}`);
-                debug(`Дата сдачи: ${deadline.value}`);
-                debug(`Дата сдачи: ${uniqSelect.value}`);
-                if (taskTypeSelect.value && subjectSelect.value && pageCountInput.value) {
-                    switchPage('order-type', 'add-info-page');
-                } else {
-                    alert('Пожалуйста, выберите тип работы, предмет и укажите количество страниц');
-                }
-            }
-
-        </script>
-
     </body>
 </html>
