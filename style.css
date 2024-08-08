@@ -256,12 +256,13 @@ background-size: 0% 0%, 0% 0%,  0% 0%,  0% 0%,  0% 0%,  0% 0%;
 }
 .custom-input {
     width: 100%;
-    padding: 10px;
+    padding: 20px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: white;
-    color: #333;
+    border-radius: 10px;
+    background-color: #A9A9A9;
+    color: #000000;
+    text-transform: uppercase;
 }
 .custom-options {
     display: none;
