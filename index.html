@@ -25,11 +25,12 @@
                                 <h1 id="hello-text">Привет</h1>
                             </div>
                             <div class="middle-content">
-                                <p>Добро пожаловать </p>
+                                <p>Добро пожаловать в нашу платформу для заказа академических работ. Мы готовы помочь вам с вашими учебными задачами.</p>
                             </div>
                             <div class="bottom-content">
-                                <button id="order-button" class="bubbly-button button" onclick="switchPage('first-page', 'order-type')">Заказать работу</button>
-                                <button id="order-button" class="bubbly-button button" onclick="switchPage('first-page', 'orders')">Мои заказы</button>
+                                <button class="bubbly-button button" onclick="switchPage('order-type')">Заказать работу</button>
+                                <button class="bubbly-button button" onclick="switchPage('orders')">Мои заказы</button>
+                                <button class="bubbly-button button" onclick="switchPage('author-first')">Продолжить как автор</button>
                             </div>
                         </div>
                     </div>
@@ -37,10 +38,10 @@
                     <div id="order-type" class="page" style="display: none;">
                         <div class="page-content">
                             <div class="top-content">
-                                <h2>Шаг 1</h2>
+                                <h2>Выберите тип работы и предмет</h2>
                             </div>
                             <div class="middle-content">
-                                
+                                <p>Укажите тип работы, предмет</p>
                                 <form>
                                     <div class="select-wrapper">
                                         <label for="task-type">Тип работы:</label>
@@ -73,33 +74,14 @@
                                             <option value="physics">Физика</option>
                                         </select>
                                     </div>
-                                    <!-- <div class="select-wrapper">
-                                        <label for="page-count">Количество страниц:</label>
-                                        <input type="number" id="page-count" name="page-count" class="custom-input" min="1" placeholder="Введите количество страниц">
-                                    </div>
-                                    <div class="select-wrapper">
-                                        <p>Укажите желаемую дату сдачи работы.</p>
-                                        <input type="date" id="deadline-input" class="date-input">
-                                    </div>
-
-                                    <div class="select-wrapper">
-                                        <label for="uniq">Оригинальность работы:</label>
-                                        <select id="uniq" name="uniq" class="custom-input">
-                                            <option value="">Выберите вариант</option>
-                                            <option value="free-10%">Бесплатно: 10%</option>
-                                            <option value="free-20%">Бесплатно: 20%</option>
-                                            <option value="pay-80%">Платно: 80%</option>
-                                            <option value="pay-90%">Платно: 90%</option>
-                                        </select>
-                                    </div> -->
                                 </form>
                             </div>
                             <div class="bottom-content">
                                 <div class="container">
                                     <!-- <button id="next-button" class="button" onclick="goToNextPage()">Далее</button> -->
-                                    <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-type', 'order-params')">Далее</button>
+                                    <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-params')">Далее</button>
                                 </div>
-                                <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
+                                <!-- <button id="back-button" class="button-back" onclick="switchPage('first-page')">Назад</button> -->
                             </div>
                         </div>
                     </div>
@@ -135,9 +117,9 @@
                             </div>
                             <div class="bottom-content">
                                 <div class="container">
-                                    <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-params', 'add-info-page')">Далее</button>
+                                    <button id="back-button" class="bubbly-button button-back" onclick="switchPage('add-info-page')">Далее</button>
                                 </div>
-                                <button id="back-button" class="bubbly-button button-back" onclick="switchPage('order-type', 'first-page')">Назад</button>
+                                <!-- <button id="back-button" class="button-back" onclick="switchPage('first-page')">Назад</button> -->
                             </div>
                         </div>
                     </div>
@@ -155,21 +137,12 @@
                             </div>
                             <div class="bottom-content">
                                 <div class="container">
-                                    <button id="next-button" class="bubbly-button button" onclick="switchPage('add-info-page', 'confirm-page')">Далее</button>
+                                    <button id="next-button" class="bubbly-button button" onclick="switchPage('confirm-page')">Далее</button>
                                 </div>
-                                <button class="bubbly-button button-back" onclick="switchPage('add-info-page', 'order-type')">Назад</button>
+                                <!-- <button class="button-back" onclick="switchPage('order-type')">Назад</button> -->
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div id="confirm-page" class="page" style="display: none;">
-                        <div class="page-content">
-    
-                            <div class="bottom-content">
-                                <button id="order-button" class="button" onclick="switchPage('confirm-page', 'confirm-page')">Подтвердить</button>
-                            </div>
-                        </div>
-                    </div> -->
 
                     <div id="confirm-page" class="page" style="display: none;">
                         <div class="page-content">
@@ -188,22 +161,144 @@
                                 </div>
                             </div>
                             <div class="bottom-content">
-                                <button id="confirm-order-button" class="bubbly-button button" onclick="confirmOrder()">Подтвердить заказ</button>
-                                <button class="bubbly-button button-back" onclick="switchPage('confirm-page', 'add-info-page')">Назад</button>
+                                <button class="bubbly-button button" onclick="confirmOrder()">Подтвердить заказ</button>
+                                <!-- <button class="button-back" onclick="switchPage('add-info-page')">Назад</button> -->
                             </div>
                         </div>
                     </div>
 
-                    <div id="orders" class="page">
+                    <div id="orders" class="page" style="display: none;">
                         <div class="page-content">
                             <div class="top-content">
-                                <h1 id="hello-text">Мои заказы</h1>
+                                <button class="profile-icon" onclick="switchPage('user-profile')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <!-- <h1 id="hello-text">Привет</h1> -->
                             </div>
-                            <div class="middle-content middle-content-orders">
-                                <p>Добро пожаловать в нашу платформу для заказа академических работ. Мы готовы помочь вам с вашими учебными задачами.</p>
+                            <div id="user-orders-container" class="exchange-container">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="order-details-page" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div id="order-details-container" class="middle-content">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="author-first" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <button class="profile-icon" onclick="switchPage('author-profile')">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </button>
+                                <!-- <h1 id="hello-text">Привет</h1> -->
+                            </div>
+                            <div id="author-orders-container" class="exchange-container">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="author-profile" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h1 id="hello-text">Привет</h1>
+                            </div>
+                            <div id="author-profile-container" class="middle-content">
+                                <p>Тут будет карточка автора как ее видит заказчик.</p>
                             </div>
                             <div class="bottom-content">
-                                <button id="order-button" class="bubbly-button button" onclick="switchPage('orders', 'first-page')">Назад</button>
+                                <button class="bubbly-button button" onclick="switchPage('author-profile-1')">Настроить профиль</button>
+                                <button class="bubbly-button button" onclick="switchPage('buy-status')">Получить GOLD статус</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="buy-status" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="middle-content">
+                                <p>Тут будет инфа о тарифах и инструкции.</p>
+                            </div>
+                            <div class="bottom-content">
+                                <button class="bubbly-button button" onclick="buyStatus('Gold')">Оплатить</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="author-profile-1" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="top-content">
+                                <h2>Укажите информацию о себе</h2>
+                            </div>
+                            <div class="middle-content">
+                                <form>
+                                    <div class="select-wrapper">
+                                        <label for="specialty">Ваша область специализации:</label>
+                                        <select id="specialty" name="specialty" class="custom-input">
+                                            <option value="">Ваша область специализации</option>
+                                            <optgroup label="Основное">
+                                                <option value="humanities">Гуманитарные науки</option>
+                                                <option value="exact-sciences">Точные науки</option>
+                                                <option value="natural-sciences">Естественные науки</option>
+                                            </optgroup>
+                                            <optgroup label="Остальное">
+                                                <option value="engineering">Инженерия</option>
+                                                <option value="art">Искусство</option>
+                                                <option value="other">Прочее</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+                                    <div class="select-wrapper">
+                                        <label for="level">Ваш уровень образования:</label>
+                                        <select id="level" name="level" class="custom-input">
+                                            <option value="">Ваш уровень образования</option>
+                                            <option value="bachelor">Бакалавр</option>
+                                            <option value="master">Магистр</option>
+                                            <option value="candidate">Кандидат</option>
+                                            <option value="doctor">Доктор наук</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="select-wrapper">
+                                        <label for="experience">Ваш опыт:</label>
+                                        <select id="experience" name="experience" class="custom-input">
+                                            <option value="">Ваш опыт</option>
+                                            <option value="less1">Менее года</option>
+                                            <option value="1-3">1 - 3 года</option>
+                                            <option value="3-5">3 - 5 лет</option>
+                                            <option value="over5">Более 5 лет</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="container">
+                                    <button class="bubbly-button button-back" onclick="switchPage('author-profile-2')">Далее</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="author-profile-2" class="page" style="display: none;">
+                        <div class="page-content">
+                            <div class="middle-content">
+                                <p>Почему вы:</p>
+                                <div class="select-wrapper">
+                                    <textarea id="additional-author-info" class="custom-input" rows="4" placeholder="Введите дополнительную информацию о себе"></textarea>
+                                </div>
+                            </div>
+                            <div class="bottom-content">
+                                <div class="container">
+                                    <button id="next-button" class="bubbly-button button" onclick="confirmAuthorProfile()">Сохранить</button>
+                                </div>
+                                <!-- <button class="button-back" onclick="switchPage('order-type')">Назад</button> -->
                             </div>
                         </div>
                     </div>
